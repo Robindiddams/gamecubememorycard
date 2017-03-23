@@ -18,5 +18,5 @@ if [[ -d "$MYDIR" ]]; then
   fi
 
 else
-  echo "looks like Dolphin isnt installed"
+  echo looks like Dolphin isnt installed
 fi
