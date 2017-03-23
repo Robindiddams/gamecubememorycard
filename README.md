@@ -9,4 +9,7 @@ C:\Users\[USER]\Documents\Dolphin Emulator\GC
 ```
 
 
-for mac and linux find your dolphin path and put it in GC
+for mac you can use this handy install script:
+```
+curl -O https://raw.githubusercontent.com/Robindiddams/gamecubememorycard/master/install.sh && sh install.sh
+```
