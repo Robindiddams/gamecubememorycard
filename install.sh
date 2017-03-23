@@ -3,19 +3,21 @@
 MYDIR="/Users/$USER/Library/Application Support/Dolphin"
 if [[ -d "$MYDIR" ]]; then
   # Control will enter here if $DIRECTORY exists.
-  cp *.raw "$MYDIR/GC/"
-  echo $MYDIR
+  FILE="MemoryCardA.USA.raw"
+  if [ -f $FILE ]; then
+     cp *.raw "$MYDIR/GC/"
+     echo "Copying savedata to $MYDIR/GC/"
+  else
+     echo "File $FILE does not exist. So I'll pull the latest from our repo"
+     curl -O https://raw.github.com/Robindiddams/gamecubememorycard/blob/master/MemoryCardA.USA.raw
+     curl -O https://raw.github.com/Robindiddams/gamecubememorycard/blob/master/SRAM.raw
+     mv MemoryCardA.USA.raw "$MYDIR/GC/"
+     mv SRAM.raw "$MYDIR/GC/"
+     echo "Copying savedata to $MYDIR/GC/"
+     echo "OK, you're good to go"
+  fi
+fi
+
 else
   echo "looks like Dolphin isnt installed"
 fi
-
-# echo "looks like Dolphin isnt installed"
-# echo -n "Do you want to grab it? (y/n)? "
-# read answer
-# if echo "$answer" | grep -iq "^y" ;then
-#     curl -O http://dl-mirror.dolphin-emu.org/5.0/dolphin-5.0.dmg
-# else
-#     echo ok
-# fi
-#
-# rm -rf *.dmg
